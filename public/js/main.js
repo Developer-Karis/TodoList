@@ -36,7 +36,10 @@ myButtonTask.addEventListener("click", () => {
     spanIcons.appendChild(createButtonOne);
 
     createButtonOne.addEventListener("click", () => {
-        console.log("Tache validé ! ");
+        createTask.style.backgroundColor = "#40A745";
+        createButtonOne.style.backgroundColor = "#40A745";
+        createButtonTwo.style.backgroundColor = "#40A745";
+        createButtonThree.style.backgroundColor = "#40A745";
     })
 
     createButtonTwo = document.createElement("button");
@@ -107,7 +110,10 @@ myInput.addEventListener("keypress", (e) => {
         spanIcons.appendChild(createButtonOne);
 
         createButtonOne.addEventListener("click", () => {
-            console.log("Tache validé ! ");
+            createTask.style.backgroundColor = "#40A745";
+            createButtonOne.style.backgroundColor = "#40A745";
+            createButtonTwo.style.backgroundColor = "#40A745";
+            createButtonThree.style.backgroundColor = "#40A745";
         })
 
         createButtonTwo = document.createElement("button");
