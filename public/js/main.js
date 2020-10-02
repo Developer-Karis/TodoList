@@ -4,43 +4,82 @@ let myButtonTask = document.getElementById("myButtonTask");
 
 let divApp = document.getElementById("div-app");
 
-// Quand on clique sur le bouton Ajouter
-
-let createDiv;
-
+let createTask;
 let iconFini;
 let iconModif;
 let iconDelete;
+let para;
+let spanIcons;
+let createButtonOne;
+let createButtonTwo;
+let createButtonThree;
+
+// Quand on clique sur le bouton Ajouter
 
 myButtonTask.addEventListener("click", () => {
-    createDiv = document.createElement("div");
-    createDiv.innerText = myInput.value;
-    createDiv.setAttribute("class", "div-item");
-    divApp.prepend(createDiv);
+    createTask = document.createElement("div");
+    createTask.setAttribute("class", "item");
+    divApp.appendChild(createTask);
+
+    // Créer le paragraphe
+    para = document.createElement("p");
+    divApp.prepend(para);
+    createTask.prepend(para);
+    para.innerText = myInput.value;
+
+    // Créer le span
+    spanIcons = document.createElement("span");
+    spanIcons.setAttribute("id", "spanIcons");
+    createTask.appendChild(spanIcons);
+
+    createButtonOne = document.createElement("button");
+    spanIcons.appendChild(createButtonOne);
+
+    createButtonOne.addEventListener("click", () => {
+        console.log("Tache validé ! ");
+    })
+
+    createButtonTwo = document.createElement("button");
+    spanIcons.appendChild(createButtonTwo);
+
+    createButtonTwo.addEventListener("click", () => {
+        console.log("Modifier ton texte ! ");
+    })
+
+    createButtonThree = document.createElement("button");
+    spanIcons.appendChild(createButtonThree);
+
+    createButtonThree.addEventListener("click", () => {
+        console.log("Supprimer une tâche");
+    })
 
     // Icon Fini
     iconFini = document.createElement("i");
     iconFini.setAttribute("class", "fas fa-check-circle fa-2x");
     iconFini.style.color = "#0AC0EF";
-    divApp.appendChild(iconFini);
+    createButtonOne.appendChild(iconFini);
 
     // Icon Modif
     iconModif = document.createElement("i");
     iconModif.setAttribute("class", "fas fa-edit fa-2x");
     iconModif.style.color = "orange";
-    divApp.appendChild(iconModif);
+    createButtonTwo.appendChild(iconModif);
 
     // Icon Delete
     iconDelete = document.createElement("i");
     iconDelete.setAttribute("class", "fas fa-trash-alt fa-2x");
     iconDelete.style.color = "red";
-    divApp.appendChild(iconDelete);
+    createButtonThree.appendChild(iconDelete);
 
+    // Créer chaque boutons pour chaque icon
     if (myInput.value == "") {
-        createDiv.style.display = "none";
+        createTask.style.display = "none";
         iconFini.style.display = "none";
         iconModif.style.display = "none";
         iconDelete.style.display = "none";
+        createButtonOne.style.display = "none";
+        createButtonTwo.style.display = "none";
+        createButtonThree.style.display = "none";
     }
     myInput.value = "";
 });
@@ -49,34 +88,69 @@ myButtonTask.addEventListener("click", () => {
 
 myInput.addEventListener("keypress", (e) => {
     if (e.key == "Enter") {
-        createDiv = document.createElement("div");
-        createDiv.innerText = myInput.value;
-        createDiv.setAttribute("class", "div-item");
-        divApp.prepend(createDiv);
+        createTask = document.createElement("div");
+        createTask.setAttribute("class", "item");
+        divApp.appendChild(createTask);
+
+        // Créer le paragraphe
+        para = document.createElement("p");
+        divApp.prepend(para);
+        createTask.prepend(para);
+        para.innerText = myInput.value;
+
+        // Créer le span
+        spanIcons = document.createElement("span");
+        spanIcons.setAttribute("id", "spanIcons");
+        createTask.appendChild(spanIcons);
+
+        createButtonOne = document.createElement("button");
+        spanIcons.appendChild(createButtonOne);
+
+        createButtonOne.addEventListener("click", () => {
+            console.log("Tache validé ! ");
+        })
+
+        createButtonTwo = document.createElement("button");
+        spanIcons.appendChild(createButtonTwo);
+
+        createButtonTwo.addEventListener("click", () => {
+            console.log("Modifier ton texte ! ");
+        })
+
+        createButtonThree = document.createElement("button");
+        spanIcons.appendChild(createButtonThree);
+
+        createButtonThree.addEventListener("click", () => {
+            console.log("Supprimer une tâche");
+        })
 
         // Icon Fini
         iconFini = document.createElement("i");
         iconFini.setAttribute("class", "fas fa-check-circle fa-2x");
         iconFini.style.color = "#0AC0EF";
-        divApp.appendChild(iconFini);
+        createButtonOne.appendChild(iconFini);
 
         // Icon Modif
         iconModif = document.createElement("i");
         iconModif.setAttribute("class", "fas fa-edit fa-2x");
         iconModif.style.color = "orange";
-        divApp.appendChild(iconModif);
+        createButtonTwo.appendChild(iconModif);
 
         // Icon Delete
         iconDelete = document.createElement("i");
         iconDelete.setAttribute("class", "fas fa-trash-alt fa-2x");
         iconDelete.style.color = "red";
-        divApp.appendChild(iconDelete);
+        createButtonThree.appendChild(iconDelete);
 
+        // Créer chaque boutons pour chaque icon
         if (myInput.value == "") {
-            createDiv.style.display = "none";
+            createTask.style.display = "none";
             iconFini.style.display = "none";
             iconModif.style.display = "none";
             iconDelete.style.display = "none";
+            createButtonOne.style.display = "none";
+            createButtonTwo.style.display = "none";
+            createButtonThree.style.display = "none";
         }
         myInput.value = "";
     }
