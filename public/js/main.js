@@ -13,10 +13,12 @@ let spanIcons;
 let createButtonOne;
 let createButtonTwo;
 let createButtonThree;
+let renamePara;
+let confirmRename;
 
 // Quand on clique sur le bouton Ajouter
 
-myButtonTask.addEventListener("click", (e) => {
+myButtonTask.addEventListener("click", () => {
     createTask = document.createElement("div");
     createTask.setAttribute("class", "item");
     divApp.appendChild(createTask);
@@ -44,14 +46,45 @@ myButtonTask.addEventListener("click", (e) => {
             arr.forEach(element => {
                 element.style.backgroundColor = "#40A745";
             });
+            e.target.parentElement.parentElement.firstElementChild.nextElementSibling.style.display = "none";
+            e.target.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.style.display = "none";
+            e.target.style.color = "black";
         }
     })
 
     createButtonTwo = document.createElement("button");
     spanIcons.appendChild(createButtonTwo);
 
-    createButtonTwo.addEventListener("click", () => {
-        console.log("Modifier ton texte ! ");
+    createButtonTwo.addEventListener("click", (e) => {
+        if (e.target.nodeName == "I") {
+            e.target.parentElement.parentElement.firstElementChild.style.display = "none";
+            e.target.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.style.display = "none";
+
+            // Créer un input pour renommer la tâche
+            renamePara = document.createElement("input");
+            renamePara.setAttribute("id", "renamePara");
+            e.target.parentElement.parentElement.parentElement.firstElementChild.style.display = "none";
+            e.target.parentElement.parentElement.parentElement.prepend(renamePara);
+            renamePara.placeholder = e.target.parentElement.parentElement.parentElement.firstElementChild.nextElementSibling.innerText;
+
+            // Bouton de confirmation pour renommer
+            confirmRename = document.createElement("button");
+            confirmRename.innerText = "Renommer";
+            confirmRename.setAttribute("id", "confirmRename");
+            e.target.parentElement.parentElement.parentElement.appendChild(confirmRename);
+
+            confirmRename.addEventListener("click", () => {
+                e.target.parentElement.parentElement.parentElement.firstElementChild.nextElementSibling.innerText = renamePara.value;
+                e.target.parentElement.parentElement.parentElement.firstElementChild.nextElementSibling.style.display = "block";
+                e.target.parentElement.parentElement.parentElement.firstElementChild.style.display = "none";
+                e.target.parentElement.parentElement.parentElement.lastElementChild.style.display = "none";
+
+                // Réafficher les buttons Valider et Supprimer
+                e.target.parentElement.parentElement.firstElementChild.style.display = "block";
+                e.target.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.style.display = "block";
+            })
+        }
+        e.target.parentElement.parentElement.firstElementChild.nextElementSibling.disabled = true;
     })
 
     createButtonThree = document.createElement("button");
@@ -123,14 +156,45 @@ myInput.addEventListener("keypress", (e) => {
                 arr.forEach(element => {
                     element.style.backgroundColor = "#40A745";
                 });
+                e.target.parentElement.parentElement.firstElementChild.nextElementSibling.style.display = "none";
+                e.target.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.style.display = "none";
+                e.target.style.color = "black";
             }
         })
 
         createButtonTwo = document.createElement("button");
         spanIcons.appendChild(createButtonTwo);
 
-        createButtonTwo.addEventListener("click", () => {
-            console.log("Modifier ton texte ! ");
+        createButtonTwo.addEventListener("click", (e) => {
+            if (e.target.nodeName == "I") {
+                e.target.parentElement.parentElement.firstElementChild.style.display = "none";
+                e.target.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.style.display = "none";
+
+                // Créer un input pour renommer la tâche
+                renamePara = document.createElement("input");
+                renamePara.setAttribute("id", "renamePara");
+                e.target.parentElement.parentElement.parentElement.firstElementChild.style.display = "none";
+                e.target.parentElement.parentElement.parentElement.prepend(renamePara);
+                renamePara.placeholder = e.target.parentElement.parentElement.parentElement.firstElementChild.nextElementSibling.innerText;
+
+                // Bouton de confirmation pour renommer
+                confirmRename = document.createElement("button");
+                confirmRename.innerText = "Renommer";
+                confirmRename.setAttribute("id", "confirmRename");
+                e.target.parentElement.parentElement.parentElement.appendChild(confirmRename);
+
+                confirmRename.addEventListener("click", () => {
+                    e.target.parentElement.parentElement.parentElement.firstElementChild.nextElementSibling.innerText = renamePara.value;
+                    e.target.parentElement.parentElement.parentElement.firstElementChild.nextElementSibling.style.display = "block";
+                    e.target.parentElement.parentElement.parentElement.firstElementChild.style.display = "none";
+                    e.target.parentElement.parentElement.parentElement.lastElementChild.style.display = "none";
+
+                    // Réafficher les buttons Valider et Supprimer
+                    e.target.parentElement.parentElement.firstElementChild.style.display = "block";
+                    e.target.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.style.display = "block";
+                })
+            }
+            e.target.parentElement.parentElement.firstElementChild.nextElementSibling.disabled = true;
         })
 
         createButtonThree = document.createElement("button");
