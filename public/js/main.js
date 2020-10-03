@@ -16,7 +16,7 @@ let createButtonThree;
 
 // Quand on clique sur le bouton Ajouter
 
-myButtonTask.addEventListener("click", () => {
+myButtonTask.addEventListener("click", (e) => {
     createTask = document.createElement("div");
     createTask.setAttribute("class", "item");
     divApp.appendChild(createTask);
@@ -35,11 +35,16 @@ myButtonTask.addEventListener("click", () => {
     createButtonOne = document.createElement("button");
     spanIcons.appendChild(createButtonOne);
 
-    createButtonOne.addEventListener("click", () => {
-        createTask.style.backgroundColor = "#40A745";
-        createButtonOne.style.backgroundColor = "#40A745";
-        createButtonTwo.style.backgroundColor = "#40A745";
-        createButtonThree.style.backgroundColor = "#40A745";
+    createButtonOne.addEventListener("click", (e) => {
+        // Récupérer les 3 buttons Valider, Modifier, Supprimer
+        let arr = Array.from(e.target.parentElement.parentElement.children);
+        if (e.target.nodeName == "I") {
+            e.target.parentElement.parentElement.parentElement.style.backgroundColor = "#40A745";
+            e.target.parentElement.parentElement.parentElement.style.color = "white";
+            arr.forEach(element => {
+                element.style.backgroundColor = "#40A745";
+            });
+        }
     })
 
     createButtonTwo = document.createElement("button");
@@ -109,11 +114,16 @@ myInput.addEventListener("keypress", (e) => {
         createButtonOne = document.createElement("button");
         spanIcons.appendChild(createButtonOne);
 
-        createButtonOne.addEventListener("click", () => {
-            createTask.style.backgroundColor = "#40A745";
-            createButtonOne.style.backgroundColor = "#40A745";
-            createButtonTwo.style.backgroundColor = "#40A745";
-            createButtonThree.style.backgroundColor = "#40A745";
+        createButtonOne.addEventListener("click", (e) => {
+            // Récupérer les 3 buttons Valider, Modifier, Supprimer
+            let arr = Array.from(e.target.parentElement.parentElement.children);
+            if (e.target.nodeName == "I") {
+                e.target.parentElement.parentElement.parentElement.style.backgroundColor = "#40A745";
+                e.target.parentElement.parentElement.parentElement.style.color = "white";
+                arr.forEach(element => {
+                    element.style.backgroundColor = "#40A745";
+                });
+            }
         })
 
         createButtonTwo = document.createElement("button");

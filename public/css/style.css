@@ -1,5 +1,7 @@
 * {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana,
+        sans-serif;
+    font-weight: bold;
 }
 
 body {
@@ -7,19 +9,15 @@ body {
 }
 
 #mainSection {
-    background-color: #0AC0EF;
-    height: 100px;
     width: 60%;
     margin: auto;
     color: white;
-    border-left: 5px solid black;
-    border-right: 5px solid black;
     border-radius: 5px;
     margin-top: 30px;
 }
 
 #ligne {
-    border: 2px solid #0AC0EF;
+    border: 2px solid #0ac0ef;
     width: 100%;
     margin-top: 30px;
     border-radius: 5px;
@@ -29,13 +27,18 @@ body {
     display: flex;
     justify-content: flex-start;
     font-size: 20px;
-    margin-left: 50px;
+    background-color: #0ac0ef;
+    border-left: 5px solid black;
+    border-right: 5px solid black;
+}
+
+#div-one > h1 {
+    margin-left: 30px;
 }
 
 #div-two {
     color: black;
     background-color: mediumaquamarine;
-    height: 200px;
     border-radius: 5px;
     border-left: 5px solid black;
     border-right: 5px solid black;
@@ -51,20 +54,25 @@ body {
 }
 
 input {
-    width: 50%;
+    width: 40%;
     padding: 10px;
     border-radius: 5px;
     outline: none;
     border: none;
+    font-size: 15px;
+    border: 2px solid black;
 }
 
 button {
     padding: 10px 20px;
-    background-color: #0579FB;
+    background-color: #0579fb;
     color: white;
     outline: none;
     border: none;
     border-radius: 3px;
+    font-size: 15px;
+    margin: 10px;
+    border: 2px solid black;
 }
 
 button:hover {
@@ -73,18 +81,19 @@ button:hover {
 }
 
 #buttonFiltre {
-    margin-top: 15px;
     text-align: right;
+    margin-bottom: 15px;
 }
 
 #buttonFiltre button {
-    background-color: #EFEFEF;
+    background-color: #efefef;
     color: black;
     text-align: center;
+    margin-bottom: 25px;
 }
 
 #buttonFiltre button:hover {
-    background-color: #FFC230;
+    background-color: #ffc230;
 }
 
 .item {
@@ -95,10 +104,17 @@ button:hover {
     padding-left: 60px;
     display: flex;
     border: 3px solid black;
+    font-size: 18px;
+}
+
+.item:hover {
+    transform: translateY(-3.5%);
+    box-shadow: 0 4rem 8rem rgba(0, 0, 0, 0.2);
 }
 
 .fas {
     margin: 10px;
+    margin: auto;
 }
 
 #spanIcons {
@@ -110,6 +126,7 @@ button:hover {
 
 #spanIcons button {
     background-color: lightgray;
+    border: none;
 }
 
 i:hover {
