@@ -43,6 +43,12 @@ let startTodoList = () => {
         let arr = Array.from(e.target.parentElement.parentElement.children);
         if (e.target.nodeName == "I") {
             e.target.parentElement.parentElement.parentElement.style.backgroundColor = "#40A745";
+
+            // Petite animation pour faire disparaître les tâches après 2 secondes
+            setTimeout(() => {
+                e.target.parentElement.parentElement.parentElement.style.display = "none";
+            }, 3000);
+
             e.target.parentElement.parentElement.parentElement.style.color = "white";
             arr.forEach(element => {
                 element.style.backgroundColor = "#40A745";
@@ -51,6 +57,7 @@ let startTodoList = () => {
             e.target.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.style.display = "none";
             e.target.style.color = "black";
         }
+        e.target.parentElement.parentElement.firstElementChild.disabled = true;
     })
 
     createButtonTwo = document.createElement("button");
@@ -58,16 +65,19 @@ let startTodoList = () => {
 
     createButtonTwo.addEventListener("click", (e) => {
         if (e.target.nodeName == "I") {
-            // Ne pas afficher le button Valider et Supprimer
+            // Ne pas afficher le button Valider, Edit et Supprimer
             e.target.parentElement.parentElement.firstElementChild.style.display = "none";
             e.target.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.style.display = "none";
 
             // Créer un input pour renommer la tâche
             renamePara = document.createElement("input");
             renamePara.setAttribute("id", "renamePara");
+
             e.target.parentElement.parentElement.parentElement.firstElementChild.style.display = "none";
             e.target.parentElement.parentElement.parentElement.prepend(renamePara);
-            renamePara.placeholder = e.target.parentElement.parentElement.parentElement.firstElementChild.nextElementSibling.innerText;
+
+            e.target.parentElement.parentElement.parentElement.firstElementChild.value =
+                e.target.parentElement.parentElement.parentElement.firstElementChild.nextElementSibling.innerText;
 
             // Bouton de confirmation pour renommer
             confirmRename = document.createElement("button");
@@ -86,6 +96,7 @@ let startTodoList = () => {
                 e.target.parentElement.parentElement.parentElement.firstElementChild.style.display = "none";
 
                 // Button de confirmation pour renommer la tâche
+                e.target.parentElement.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.style.display = "none";
                 e.target.parentElement.parentElement.parentElement.lastElementChild.style.display = "none";
 
                 // Réafficher les buttons Valider et Supprimer
@@ -107,11 +118,12 @@ let startTodoList = () => {
 
             confirmDelete = document.createElement("button");
             confirmDelete.innerText = "Supprimer";
+            confirmDelete.setAttribute("id", "confirmDelete");
             confirmDelete.style.backgroundColor = "red";
             e.target.parentElement.parentElement.parentElement.appendChild(confirmDelete);
 
             confirmDelete.addEventListener("click", () => {
-                e.target.parentElement.parentElement.parentElement.style.display = "none";
+                e.target.parentElement.parentElement.parentElement.parentElement.removeChild(e.target.parentElement.parentElement.parentElement);
             })
         }
         e.target.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.disabled = true;
@@ -159,3 +171,36 @@ myInput.addEventListener("keypress", (e) => {
 myButtonTask.addEventListener("click", () => {
     startTodoList();
 });
+
+// Gérer les filtres
+
+let buttonTodo = document.getElementById("buttonFiltre").children[0];
+let buttonDone = document.getElementById("buttonFiltre").children[1];
+let buttonAll = document.getElementById("buttonFiltre").children[2];
+
+let verifFiltre = (e) => {
+    let arrItem = Array.from(e.target.parentElement.parentElement.parentElement.parentElement.lastElementChild.children);
+    arrItem.forEach(element => {
+        if (e.target == buttonTodo) {
+            if (element.style.backgroundColor != "rgb(64, 167, 69)") {
+                element.style.display = 'flex';
+            } else if (element.style.backgroundColor == "rgb(64, 167, 69)") {
+                element.style.display = 'none';
+            }
+        } else if (e.target == buttonDone) {
+            if (element.style.backgroundColor != "rgb(64, 167, 69)") {
+                element.style.display = 'none';
+            } else if (element.style.backgroundColor == "rgb(64, 167, 69)") {
+                element.style.display = 'flex';
+            }
+        } else if (e.target == buttonAll) {
+            element.style.display = 'flex';
+        }
+    });
+}
+
+buttonTodo.addEventListener("click", verifFiltre);
+
+buttonDone.addEventListener("click", verifFiltre);
+
+buttonAll.addEventListener("click", verifFiltre);

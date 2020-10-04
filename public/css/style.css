@@ -152,3 +152,11 @@ p {
 #renamePara::placeholder {
     color: black;
 }
+
+#confirmDelete:hover {
+    background-color: black !important;
+}
+
+#backTask:hover {
+    background-color: black !important;
+}
