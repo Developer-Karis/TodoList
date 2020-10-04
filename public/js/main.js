@@ -44,6 +44,8 @@ let startTodoList = () => {
         if (e.target.nodeName == "I") {
             e.target.parentElement.parentElement.parentElement.style.backgroundColor = "#40A745";
 
+            e.target.parentElement.parentElement.firstElementChild.className = "animate__animated animate__heartBeat";
+
             // Petite animation pour faire disparaître les tâches après 2 secondes
             setTimeout(() => {
                 e.target.parentElement.parentElement.parentElement.style.display = "none";
@@ -54,6 +56,7 @@ let startTodoList = () => {
                 element.style.backgroundColor = "#40A745";
             });
             e.target.parentElement.parentElement.firstElementChild.nextElementSibling.style.display = "none";
+
             e.target.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.style.display = "none";
             e.target.style.color = "black";
         }
@@ -69,12 +72,14 @@ let startTodoList = () => {
             e.target.parentElement.parentElement.firstElementChild.style.display = "none";
             e.target.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.style.display = "none";
 
+            e.target.parentElement.parentElement.firstElementChild.nextElementSibling.className = "animate__animated animate__heartBeat";
+
             // Créer un input pour renommer la tâche
             renamePara = document.createElement("input");
             renamePara.setAttribute("id", "renamePara");
 
-            e.target.parentElement.parentElement.parentElement.firstElementChild.style.display = "none";
             e.target.parentElement.parentElement.parentElement.prepend(renamePara);
+            e.target.parentElement.parentElement.parentElement.firstElementChild.nextElementSibling.style.display = "none";
 
             e.target.parentElement.parentElement.parentElement.firstElementChild.value =
                 e.target.parentElement.parentElement.parentElement.firstElementChild.nextElementSibling.innerText;
@@ -115,6 +120,8 @@ let startTodoList = () => {
             // Ne pas afficher les buttons Valider et Editer
             e.target.parentElement.parentElement.firstElementChild.style.display = "none";
             e.target.parentElement.parentElement.firstElementChild.nextElementSibling.style.display = "none";
+
+            e.target.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.className = "animate__animated animate__heartBeat";
 
             confirmDelete = document.createElement("button");
             confirmDelete.innerText = "Supprimer";
