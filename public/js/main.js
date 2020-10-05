@@ -72,7 +72,6 @@ let startTodoList = () => {
             e.target.parentElement.parentElement.firstElementChild.style.display = "none";
             e.target.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.style.display = "none";
 
-            e.target.parentElement.parentElement.firstElementChild.nextElementSibling.className = "animate__animated animate__heartBeat";
 
             // Créer un input pour renommer la tâche
             renamePara = document.createElement("input");
@@ -211,3 +210,15 @@ buttonTodo.addEventListener("click", verifFiltre);
 buttonDone.addEventListener("click", verifFiltre);
 
 buttonAll.addEventListener("click", verifFiltre);
+
+// Mettre les filtres en active
+
+let header = document.getElementById("buttonFiltre");
+let btns = header.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function () {
+        let current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+    });
+}
