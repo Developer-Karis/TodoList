@@ -38,6 +38,42 @@ let startTodoList = () => {
     createButtonOne = document.createElement("button");
     spanIcons.appendChild(createButtonOne);
 
+    createButtonTwo = document.createElement("button");
+    spanIcons.appendChild(createButtonTwo);
+
+    createButtonThree = document.createElement("button");
+    spanIcons.appendChild(createButtonThree);
+
+    // Icon Fini
+    iconFini = document.createElement("i");
+    iconFini.setAttribute("class", "fas fa-check-circle fa-2x");
+    iconFini.style.color = "#0AC0EF";
+    createButtonOne.appendChild(iconFini);
+
+    // Icon Modif
+    iconModif = document.createElement("i");
+    iconModif.setAttribute("class", "fas fa-edit fa-2x");
+    iconModif.style.color = "orange";
+    createButtonTwo.appendChild(iconModif);
+
+    // Icon Delete
+    iconDelete = document.createElement("i");
+    iconDelete.setAttribute("class", "fas fa-trash-alt fa-2x");
+    iconDelete.style.color = "red";
+    createButtonThree.appendChild(iconDelete);
+
+    // Créer chaque boutons pour chaque icon
+    if (myInput.value == "") {
+        createTask.style.display = "none";
+        iconFini.style.display = "none";
+        iconModif.style.display = "none";
+        iconDelete.style.display = "none";
+        createButtonOne.style.display = "none";
+        createButtonTwo.style.display = "none";
+        createButtonThree.style.display = "none";
+    }
+    myInput.value = "";
+
     createButtonOne.addEventListener("click", (e) => {
         // Récupérer les 3 buttons Valider, Modifier, Supprimer
         let arr = Array.from(e.target.parentElement.parentElement.children);
@@ -62,9 +98,6 @@ let startTodoList = () => {
         }
         e.target.parentElement.parentElement.firstElementChild.disabled = true;
     })
-
-    createButtonTwo = document.createElement("button");
-    spanIcons.appendChild(createButtonTwo);
 
     createButtonTwo.addEventListener("click", (e) => {
         if (e.target.nodeName == "I") {
@@ -111,9 +144,6 @@ let startTodoList = () => {
         e.target.parentElement.parentElement.firstElementChild.nextElementSibling.disabled = true;
     })
 
-    createButtonThree = document.createElement("button");
-    spanIcons.appendChild(createButtonThree);
-
     createButtonThree.addEventListener("click", (e) => {
         if (e.target.nodeName == "I") {
             // Ne pas afficher les buttons Valider et Editer
@@ -134,36 +164,6 @@ let startTodoList = () => {
         }
         e.target.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.disabled = true;
     })
-
-    // Icon Fini
-    iconFini = document.createElement("i");
-    iconFini.setAttribute("class", "fas fa-check-circle fa-2x");
-    iconFini.style.color = "#0AC0EF";
-    createButtonOne.appendChild(iconFini);
-
-    // Icon Modif
-    iconModif = document.createElement("i");
-    iconModif.setAttribute("class", "fas fa-edit fa-2x");
-    iconModif.style.color = "orange";
-    createButtonTwo.appendChild(iconModif);
-
-    // Icon Delete
-    iconDelete = document.createElement("i");
-    iconDelete.setAttribute("class", "fas fa-trash-alt fa-2x");
-    iconDelete.style.color = "red";
-    createButtonThree.appendChild(iconDelete);
-
-    // Créer chaque boutons pour chaque icon
-    if (myInput.value == "") {
-        createTask.style.display = "none";
-        iconFini.style.display = "none";
-        iconModif.style.display = "none";
-        iconDelete.style.display = "none";
-        createButtonOne.style.display = "none";
-        createButtonTwo.style.display = "none";
-        createButtonThree.style.display = "none";
-    }
-    myInput.value = "";
 }
 
 // La touche Enter pour créer une tâche
